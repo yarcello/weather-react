@@ -1,0 +1,10 @@
+ul {
+  list-style: none;
+}
+.weatherPage {
+  border: 1px grey solid;
+  padding: 40px;
+  max-width: 600px;
+  display: block;
+  margin: 30px auto;
+}

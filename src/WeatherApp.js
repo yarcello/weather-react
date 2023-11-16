@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./WeatherApp.css";
 
 export default function WeatherApp() {
   const [city, setCity] = useState(" ");
@@ -37,16 +38,20 @@ export default function WeatherApp() {
   if (display) {
     return (
       <div>
-        {form}
-        <ul>
-          <li>Tepmerature: {weather.temp}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
+        <div className="weatherPage">
+          {form}
+          <ul>
+            <li>Tepmerature: {weather.temp}°C</li>
+            <li>Description: {weather.description}</li>
+            <li>Humidity: {weather.humidity}%</li>
+            <li>Wind: {weather.wind}km/h</li>
+            <li>
+              <img src={weather.icon} alt={weather.description} />
+            </li>
+          </ul>
+        </div>
+        <a href="https://github.com/yarcello/weather-react.git">Open source</a>{" "}
+        by Yaro Trofymchuk
       </div>
     );
   } else {
