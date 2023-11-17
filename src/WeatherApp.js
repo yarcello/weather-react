@@ -4,11 +4,9 @@ import "./WeatherApp.css";
 
 export default function WeatherApp() {
   const [city, setCity] = useState(" ");
-  const [display, setDisplay] = useState(false);
-  let [weather, setWeather] = useState(null);
+  let [weather, setWeather] = useState("");
 
   function displayWeather(response) {
-    setDisplay(true);
     setWeather({
       temp: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
@@ -28,33 +26,29 @@ export default function WeatherApp() {
     setCity(event.target.value);
   }
 
-  let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="type a city" onChange={updateCity} />
-      <input type="submit" value="search" />
-    </form>
-  );
-
-  if (display) {
-    return (
-      <div>
-        <div className="weatherPage">
-          {form}
-          <ul>
-            <li>Tepmerature: {weather.temp}°C</li>
-            <li>Description: {weather.description}</li>
-            <li>Humidity: {weather.humidity}%</li>
-            <li>Wind: {weather.wind}km/h</li>
-            <li>
-              <img src={weather.icon} alt={weather.description} />
-            </li>
-          </ul>
-        </div>
-        <a href="https://github.com/yarcello/weather-react.git">Open source</a>{" "}
-        by Yaro Trofymchuk
+  return (
+    <div>
+      <div className="weatherPage">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            placeholder="type a city"
+            onChange={updateCity}
+          />
+          <input type="submit" value="search" />
+        </form>
+        <ul>
+          <li>Tepmerature: {weather.temp}°C</li>
+          <li>Description: {weather.description}</li>
+          <li>Humidity: {weather.humidity}%</li>
+          <li>Wind: {weather.wind}km/h</li>
+          <li>
+            <img src={weather.icon} alt={weather.description} />
+          </li>
+        </ul>
       </div>
-    );
-  } else {
-    return form;
-  }
+      <a href="https://github.com/yarcello/weather-react.git">Open source</a> by
+      Yaro Trofymchuk
+    </div>
+  );
 }
