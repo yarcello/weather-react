@@ -4,10 +4,12 @@ import "./WeatherApp.css";
 
 export default function WeatherApp() {
   const [city, setCity] = useState(" ");
-  let [weather, setWeather] = useState("");
+  let [weather, setWeather] = useState(" ");
 
   function displayWeather(response) {
+    console.log(response);
     setWeather({
+      cityname: response.data.name,
       temp: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       humidity: Math.round(response.data.main.humidity),
@@ -28,27 +30,43 @@ export default function WeatherApp() {
 
   return (
     <div>
-      <div className="weatherPage">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="type a city"
-            onChange={updateCity}
-          />
-          <input type="submit" value="search" />
-        </form>
-        <ul>
-          <li>Tepmerature: {weather.temp}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
+      <div className="container weatherPage">
+        <div className="row">
+          <form onSubmit={handleSubmit} className="searchForm">
+            <input
+              type="search"
+              placeholder="Type your city..."
+              onChange={updateCity}
+              className="searchInput"
+            />
+            <input type="submit" value="search" className="searchButton" />
+          </form>
+        </div>
+
+        <div className="row">
+          <div className="col-6">
+            <ul>
+              <li>
+                It is currently <strong>{weather.temp}°C</strong> in{" "}
+                {weather.cityname}
+              </li>
+              <li>{weather.description}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {weather.wind}km/h</li>
+            </ul>
+          </div>
+          <div className="col-6">
+            {" "}
+            <div className="icon">
+              <img src={weather.icon} alt={weather.description} />
+            </div>
+          </div>
+        </div>
       </div>
-      <a href="https://github.com/yarcello/weather-react.git">Open source</a> by
-      Yaro Trofymchuk
+      <div className="footer">
+        <a href="https://github.com/yarcello/weather-react.git">Open source</a>{" "}
+        by Yaro Trofymchuk
+      </div>
     </div>
   );
 }
