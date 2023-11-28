@@ -54,4 +54,5 @@ img {
 footer {
   text-align: left;
   color: var(--primary-color);
+  font-size: 11px;
 }
