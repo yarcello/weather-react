@@ -1,34 +1,57 @@
 :root {
   --border-color: rgb(209, 217, 224);
+  --primary-color: rgb(104, 104, 104);
 }
 
+h1 {
+  padding-top: 10px;
+}
 ul {
   list-style: none;
   text-align: left;
 }
+
+.mainInfo {
+  text-align: left;
+}
 .weatherPage {
+  font-family: Arial, Helvetica, sans-serif;
   border: 1px var(--border-color) solid;
   border-radius: 4px;
-  padding: 10px;
-  max-width: 600px;
-  display: block;
-  margin: 30px auto;
+  color: var(--primary-color);
+  padding: 20px;
+  margin: 0 auto;
 }
+
 .searchInput {
-  margin: 20px;
-  width: 300px;
+  width: 100%;
   border-color: var(--border-color);
   border-radius: 4px;
 }
 .searchButton {
-  width: 100px;
+  width: 100%;
   background-color: rgb(222, 232, 238);
   border-color: var(--border-color);
   border-radius: 4px;
 }
-.footer {
-  text-align: left;
+.degrees {
+  font-size: 47px;
+  line-height: 80px;
+  float: left;
+  padding: 0 5px 0 10px;
+}
+.units {
+  font-size: 13px;
+  float: left;
   position: relative;
-  left: 225px;
-  top: -20px;
+  top: 19px;
+}
+
+img {
+  float: left;
+  height: 80px;
+}
+footer {
+  text-align: left;
+  color: var(--primary-color);
 }
