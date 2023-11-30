@@ -2,7 +2,15 @@
   --border-color: rgb(209, 217, 224);
   --primary-color: rgb(104, 104, 104);
 }
-
+.WeatherApp {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px var(--border-color) solid;
+  border-radius: 4px;
+  color: var(--primary-color);
+  padding: 20px;
+}
 h1 {
   padding-top: 10px;
 }
@@ -13,14 +21,6 @@ ul {
 
 .mainInfo {
   text-align: left;
-}
-.weatherPage {
-  font-family: Arial, Helvetica, sans-serif;
-  border: 1px var(--border-color) solid;
-  border-radius: 4px;
-  color: var(--primary-color);
-  padding: 20px;
-  margin: 0 auto;
 }
 
 .searchInput {
@@ -46,7 +46,11 @@ ul {
   position: relative;
   top: 19px;
 }
-
+.spinner {
+  position: relative;
+  left: 280px;
+  top: 80px;
+}
 img {
   float: left;
   height: 80px;
