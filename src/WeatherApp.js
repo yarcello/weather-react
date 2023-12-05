@@ -3,11 +3,13 @@ import axios from "axios";
 import "./WeatherApp.css";
 import "bootstrap/dist/css/bootstrap.css";
 import WeatherData from "./WeatherData.js";
+import WeatherForecast from "./WeatherForecast";
 import { Oval } from "react-loader-spinner";
 
 export default function WeatherApp(props) {
   const [weather, setWeather] = useState({ ready: false });
   const [city, setCity] = useState(props.city);
+
   function displayWeather(response) {
     setWeather({
       ready: true,
@@ -18,11 +20,12 @@ export default function WeatherApp(props) {
       humidity: Math.round(response.data.main.humidity),
       wind: Math.round(response.data.wind.speed),
       icon: response.data.weather[0].icon,
+      coordinates: response.data.coord,
     });
   }
 
   function search() {
-    const apiKey = `0efb4fc16a9ed98dc0b3aafd8491d6ad`;
+    const apiKey = `0c0f164b5a01385a144a2eb362909b84`;
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeather);
   }
@@ -60,6 +63,7 @@ export default function WeatherApp(props) {
             </div>
           </form>
           <WeatherData data={weather} />
+          <WeatherForecast coordinates={weather.coordinates} />
         </div>
         <footer>
           This page was coded by Yaro Trofymchuk and is{" "}

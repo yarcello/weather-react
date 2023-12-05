@@ -1,0 +1,11 @@
+.Weather-forecast {
+  text-align: center;
+}
+
+.temp-max {
+  margin-right: 5px;
+}
+
+.temp-min {
+  opacity: 70%;
+}
