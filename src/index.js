@@ -8,7 +8,6 @@ import background from "./clouds.jpg";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <img src={background} className="img img-fluid" />
     <App />
   </React.StrictMode>
 );
