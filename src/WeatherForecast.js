@@ -1,37 +1,39 @@
 import React, { useState } from "react";
-import WeatherIcon from "./WeatherIcon";
+import ForecastDay from "./ForecastDay";
+
 import "./WeatherForecast.css";
-import Axios from "axios";
+import axios from "axios";
 
 export default function WeatherForecast(props) {
-  const [infoAvailable, setinfoAvailable] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState(null);
   function handleResponse(response) {
-    console.log(response.data);
+    setForecast(response.data.daily);
+    setLoaded(true);
   }
-  if (infoAvailable) {
-    const apiKey = "0c0f164b5a01385a144a2eb362909b84";
-    let lon = props.coordinates.lon;
-    let lat = props.coordinates.lat;
-    const apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&appid=${apiKey}$units=metric`;
-    Axios.get(apiUrl).then(handleResponse);
-
+  function search() {
+    let apiKey = `1a6432c5ca7b6f9b0bee45c98d54ea71`;
+    let longitude = props.coordinates.lon;
+    let latitude = props.coordinates.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
     return null;
-  } else {
+  }
+  if (loaded) {
     return (
-      <div>
-        <div className="row">
-          <div className="col Weather-forecast">
-            <div className="Forecast-day">Mon</div>
-            <div className="weather-icon">
-              <WeatherIcon code="01d" size={40} />
-            </div>
-            <div className="Forecast-temp">
-              <span className="temp-max">20°</span>
-              <span className="temp-min">19°</span>
-            </div>
-          </div>
-        </div>
+      <div className="row">
+        {forecast.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return (
+              <div className="col Weather-forecast" key={index}>
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          }
+        })}
       </div>
     );
+  } else {
+    search();
   }
 }
