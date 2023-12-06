@@ -20,7 +20,7 @@ export default function WeatherData(props) {
             </div>
             <WeatherTemperature celsius={props.data.temp} />
           </div>
-          <div className="col-6">
+          <div className="col-6 description">
             <ul>
               <li className="text-capitalize">{props.data.description}</li>
               <li>Humidity: {props.data.humidity}%</li>
