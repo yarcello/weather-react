@@ -11,6 +11,8 @@
   border-radius: 6px;
   color: var(--primary-color);
   padding: 20px;
+  background-image: linear-gradient(to top, #b3c7eb56 0%, white 100%);
+  background-blend-mode: screen;
 }
 h1 {
   padding-top: 10px;
